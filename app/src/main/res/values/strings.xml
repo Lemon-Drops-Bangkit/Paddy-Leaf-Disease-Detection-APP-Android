@@ -13,4 +13,8 @@
     <string name="leaf_disease">Paddy Diseases</string>
     <string name="retake_picture">Re-take Picture</string>
     <string name="information">Information</string>
+    <string name="step1">Click on the Take Picture button</string>
+    <string name="step2">Point the camera at the rice leaf you want to detect</string>
+    <string name="step3">Result of detection will appear when the detection process is complete</string>
+
 </resources>
