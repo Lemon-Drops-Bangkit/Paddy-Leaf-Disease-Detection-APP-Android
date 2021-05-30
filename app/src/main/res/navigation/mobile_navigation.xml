@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.b21_cap0183.paddycare.presentation.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.b21_cap0183.paddycare.presentation.history.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/nav_diseases"
+        android:name="com.b21_cap0183.paddycare.presentation.disease.DiseaseFragment"
+        android:label="@string/leaf_disease"
+        tools:layout="@layout/fragment_disease" />
+
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.b21_cap0183.paddycare.presentation.setting.SettingFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
