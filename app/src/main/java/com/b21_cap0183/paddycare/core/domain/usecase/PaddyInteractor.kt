@@ -1,4 +1,10 @@
 package com.b21_cap0183.paddycare.core.domain.usecase
 
-class PaddyInteractor {
+import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
+
+class PaddyInteractor(private val paddyRepository: IPaddyRepository): PaddyUseCase {
+
+    override fun getAllDisease() = paddyRepository.getAllDisease()
+
+    override fun getDiseaseById(id: Int) = paddyRepository.getDiseaseById(id)
 }
