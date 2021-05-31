@@ -11,7 +11,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_take_image"
+        android:src="@drawable/ic_takeimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
