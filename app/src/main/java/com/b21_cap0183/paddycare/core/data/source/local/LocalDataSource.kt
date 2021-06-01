@@ -4,7 +4,9 @@ import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
 import com.b21_cap0183.paddycare.core.data.source.local.room.PaddyDao
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class LocalDataSource @Inject constructor(private val paddyDao: PaddyDao) {
 
     fun getAllDisease(): Flow<List<DiseaseEntity>> = paddyDao.getAllDisease()

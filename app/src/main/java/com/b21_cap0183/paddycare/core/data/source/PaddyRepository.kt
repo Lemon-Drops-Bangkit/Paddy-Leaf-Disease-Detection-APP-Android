@@ -10,8 +10,11 @@ import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
 import com.b21_cap0183.paddycare.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class PaddyRepository constructor(
+@Singleton
+class PaddyRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
 ) : IPaddyRepository {

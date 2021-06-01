@@ -61,7 +61,6 @@ class HomeFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-//            val takenImage = data?.extras?.get("data") as Bitmap
             val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
             fragmentHomeBinding.picture.setImageBitmap(takenImage)
             fragmentHomeBinding.btnTakePicture.text = "Re-take Picture"

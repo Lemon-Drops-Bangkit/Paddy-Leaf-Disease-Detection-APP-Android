@@ -17,8 +17,8 @@
             android:icon="@drawable/leaf_paddy"
             android:title="@string/leaf_disease" />
         <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_setting"
-            android:title="@string/setting" />
+            android:id="@+id/nav_information"
+            android:icon="@drawable/ic_menu_info"
+            android:title="@string/information" />
     </group>
 </menu>
