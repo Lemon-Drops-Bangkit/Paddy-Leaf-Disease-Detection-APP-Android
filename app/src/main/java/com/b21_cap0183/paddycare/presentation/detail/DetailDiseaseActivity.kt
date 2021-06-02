@@ -29,15 +29,13 @@ class DetailDiseaseActivity : AppCompatActivity() {
         val extras = intent.extras
         if (extras != null) {
             val diseaseId = extras.getInt(EXTRA_DISEASE)
-            if (diseaseId != null) {
                 viewModel.setSelectedId(diseaseId)
                 populateDisease(viewModel.getDisease())
 
-            }
         }
 
         BottomSheetBehavior.from(activityDetailDiseaseBinding.sheet).apply {
-            peekHeight = 310
+            peekHeight = 500
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }
     }

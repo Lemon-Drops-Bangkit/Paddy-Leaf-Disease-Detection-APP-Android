@@ -14,7 +14,7 @@
             android:title="@string/history" />
         <item
             android:id="@+id/nav_diseases"
-            android:icon="@drawable/leaf_paddy"
+            android:icon="@drawable/ic_leaf"
             android:title="@string/leaf_disease" />
         <item
             android:id="@+id/nav_information"

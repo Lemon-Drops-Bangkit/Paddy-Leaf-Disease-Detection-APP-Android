@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/green_01"
     android:layout_height="match_parent"
     tools:context=".presentation.detail.DetailDiseaseActivity">
 
@@ -22,7 +23,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="65dp"
-        android:background="@drawable/background"
+        android:background="@color/yellow"
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textColor="@color/white"

@@ -3,7 +3,7 @@
     package="com.b21_cap0183.paddycare">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".core.di.BaseApplication"
@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PaddyCare">
-        <activity android:name=".presentation.splashscreen.SplashScreenActivity"
+        <activity android:name=".presentation.result.ResultDetectionActivity"></activity>
+        <activity
+            android:name=".presentation.splashscreen.SplashScreenActivity"
             android:theme="@style/Theme.PaddyCare.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.detail.DetailDiseaseActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.b21_cap0183.fileprovider"
@@ -35,8 +38,7 @@
         <activity
             android:name=".presentation.main.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.PaddyCare.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.PaddyCare.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,8 @@
     <color name="green_02">#1b6355</color>
     <color name="black_01">#0d0e0b</color>
     <color name="gray_01">#deebe6</color>
+    
+    <color name="yellow">#ffe75e</color>
 
     <color name="placeholder">#6FB6B6B6</color>
 </resources>

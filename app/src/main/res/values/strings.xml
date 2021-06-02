@@ -15,5 +15,9 @@
     <string name="step1">Click on the Take Picture button</string>
     <string name="step2">Point the camera at the rice leaf you want to detect</string>
     <string name="step3">Result of detection will appear when the detection process is complete</string>
+    <string name="steps">Steps to detect paddy leaf diseases</string>
+    <string name="click_button">Click Button</string>
+    <string name="see_result">See Result</string>
+    <string name="empty">History of disease detection is empty</string>
 
 </resources>
