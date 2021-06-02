@@ -7,4 +7,8 @@ class PaddyInteractor(private val paddyRepository: IPaddyRepository): PaddyUseCa
     override fun getAllDisease() = paddyRepository.getAllDisease()
 
     override fun getDiseaseById(id: Int) = paddyRepository.getDiseaseById(id)
+
+    override fun getAllResult() = paddyRepository.getAllResult()
+
+    override fun getResultById(id: Int) = paddyRepository.getResultById(id)
 }
