@@ -10,7 +10,10 @@ data class DiseaseResponse(
     val name: String,
 
     @field:SerializedName("description")
-    val desc: String,
+    val description: String,
+
+    @field:SerializedName("solution")
+    val solution: String,
 
     @field:SerializedName("picture")
     val picture: Int

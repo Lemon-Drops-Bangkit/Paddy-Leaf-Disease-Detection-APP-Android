@@ -12,8 +12,26 @@ object DataDummy {
         diseases.add(
             DiseaseEntity(
                 1,
-                "Disease 1",
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+                "Leaf Blast",
+                diseaseDescription = """
+                    Spots on the leaf midrib.
+                    Rhombus-shaped spots on leaves and leaf midribs.
+                    Gray or white spots and brown/reddish brown edges.
+                    Brown spots on panicles, dead leaves, and dry leaf midrib.
+                    Empty panicles.
+                """.trimIndent() ,
+                diseaseSolution = """
+                    Use resistant varieties according to the distribution of races in the local area.
+                    Use healthy seeds.
+                    Avoid the use of nitrogen fertilizers above the recommended dose.
+                    Avoid planting rice with the same variety continuously throughout the year.
+                    Environmental sanitation must be intensive because alternative hosts for pathogens can be grasses.
+                    Avoid planting rice late from nearby farmers' crops.
+                    Early control with seed treatment is highly recommended to save the nursery until the age of 30 days after sowing.
+                    Systemic fungicide spraying should be done twice at the maximum tillering stage and at the beginning of flowering to prevent leaf blast and neck blast, especially in endemic areas.
+                    Avoid close spacing (spread directly).
+                    Use of compost as a source of organic matter.
+                """.trimIndent(),
                 R.drawable.paddy1
             )
         )
@@ -21,8 +39,9 @@ object DataDummy {
         diseases.add(
             DiseaseEntity(
                 2,
-                "Disease 2",
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+                "Brown Spot",
+                "",
+                "",
                 R.drawable.paddy2
             )
         )
@@ -30,8 +49,9 @@ object DataDummy {
         diseases.add(
             DiseaseEntity(
                 3,
-                "Disease 3",
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+                "Rice Hispa",
+                "",
+                "",
                 R.drawable.paddy4
             )
         )
@@ -40,7 +60,8 @@ object DataDummy {
             DiseaseEntity(
                 4,
                 "Disease 4",
-                "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+                "",
+                "",
                 R.drawable.paddy6
             )
         )

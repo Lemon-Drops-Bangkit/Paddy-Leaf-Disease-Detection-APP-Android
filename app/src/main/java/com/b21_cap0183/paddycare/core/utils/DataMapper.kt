@@ -11,7 +11,8 @@ object DataMapper {
             val disease = DiseaseEntity(
                 diseaseId = it.id,
                 diseaseName = it.name,
-                diseaseDesc = it.desc,
+                diseaseDescription = it.description,
+                diseaseSolution = it.solution,
                 diseasePicture = it.picture
             )
             diseaseList.add(disease)
@@ -24,7 +25,7 @@ object DataMapper {
             Disease(
                 diseaseId = it.diseaseId,
                 diseaseName = it.diseaseName,
-                diseaseDesc = it.diseaseDesc,
+                diseaseDesc = it.diseaseDescription,
                 diseasePicture = it.diseasePicture
             )
         }

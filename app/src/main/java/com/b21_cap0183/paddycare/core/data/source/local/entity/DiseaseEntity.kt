@@ -15,8 +15,11 @@ data class DiseaseEntity(
     @ColumnInfo(name = "diseaseName")
     var diseaseName: String,
 
-    @ColumnInfo(name = "diseaseDesc")
-    var diseaseDesc: String,
+    @ColumnInfo(name = "diseaseDescription")
+    var diseaseDescription: String,
+
+    @ColumnInfo(name = "diseaseSolution")
+    var diseaseSolution: String,
 
     @ColumnInfo(name = "diseasePicture")
     var diseasePicture: Int

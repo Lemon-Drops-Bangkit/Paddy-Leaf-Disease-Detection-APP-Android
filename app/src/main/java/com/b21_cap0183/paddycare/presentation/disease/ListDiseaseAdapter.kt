@@ -27,7 +27,7 @@ class ListDiseaseAdapter : RecyclerView.Adapter<ListDiseaseAdapter.DiseaseViewHo
         fun bind(diseaseEntity: DiseaseEntity) {
             with(binding) {
                 dTitle.text = diseaseEntity.diseaseName
-                dDesc.text = diseaseEntity.diseaseDesc
+                dDesc.text = diseaseEntity.diseaseDescription
 
                 Glide.with(itemView.context)
                     .load(diseaseEntity.diseasePicture)

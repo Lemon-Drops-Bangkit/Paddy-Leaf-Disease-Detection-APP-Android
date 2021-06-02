@@ -46,8 +46,7 @@ class DetailDiseaseActivity : AppCompatActivity() {
         Glide.with(this)
                 .load(diseaseEntity.diseasePicture)
                 .into(activityDetailDiseaseBinding.detImage)
-        contentDetailBinding.detDesc.text = diseaseEntity.diseaseDesc
-        contentDetailBinding.txtInfo.text = "Healthy"
-
+        contentDetailBinding.detDesc.text = diseaseEntity.diseaseDescription
+        contentDetailBinding.detSolution.text = diseaseEntity.diseaseSolution
     }
 }

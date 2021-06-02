@@ -26,6 +26,16 @@
            android:text="@string/healthy"
            android:layout_below="@id/txt_info"
            android:textSize="18sp"/>
+
+       <TextView
+           android:id="@+id/det_solution"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="50dp"
+           android:text="solution"
+           android:layout_below="@id/txt_info"
+           android:textSize="18sp"/>
+
    </RelativeLayout>
 
 

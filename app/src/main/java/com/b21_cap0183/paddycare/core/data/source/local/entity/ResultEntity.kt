@@ -19,5 +19,5 @@ data class ResultEntity(
     var resultDesc: String,
 
     @ColumnInfo(name = "resultSolution")
-    var resultSolution: Int
+    var resultSolution: String
 )
