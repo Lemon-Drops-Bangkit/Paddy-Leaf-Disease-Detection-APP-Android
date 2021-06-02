@@ -19,5 +19,6 @@
     <string name="click_button">Click Button</string>
     <string name="see_result">See Result</string>
     <string name="empty">History of disease detection is empty</string>
+    <string name="solution">solution</string>
 
 </resources>

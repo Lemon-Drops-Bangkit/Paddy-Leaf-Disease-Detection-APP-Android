@@ -24,6 +24,8 @@ class DetailDiseaseActivity : AppCompatActivity() {
         setContentView(activityDetailDiseaseBinding.root)
         contentDetailBinding = activityDetailDiseaseBinding.contentDetail
 
+        setSupportActionBar(activityDetailDiseaseBinding.toolbar)
+
         val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
 
         val extras = intent.extras
@@ -34,15 +36,10 @@ class DetailDiseaseActivity : AppCompatActivity() {
 
         }
 
-        BottomSheetBehavior.from(activityDetailDiseaseBinding.sheet).apply {
-            peekHeight = 500
-            this.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
     }
 
     private fun populateDisease(diseaseEntity: DiseaseEntity) {
-        activityDetailDiseaseBinding.detTitle.text = diseaseEntity.diseaseName
-        activityDetailDiseaseBinding.detStatus.text = "Healthy"
+        supportActionBar?.title = diseaseEntity.diseaseName
         Glide.with(this)
                 .load(diseaseEntity.diseasePicture)
                 .into(activityDetailDiseaseBinding.detImage)
