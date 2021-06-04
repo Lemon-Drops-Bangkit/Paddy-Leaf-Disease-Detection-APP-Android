@@ -5,7 +5,10 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,10 +33,11 @@ object RetrofitModule {
     @Singleton
     @Provides
     fun provideRetrofit(client: OkHttpClient): ApiService {
-        return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("ac")
+        return Retrofit.Builder()
+            .baseUrl("http://34.101.223.192:5000/")
+            .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-            .create()
+            .create(ApiService::class.java)
     }
 }

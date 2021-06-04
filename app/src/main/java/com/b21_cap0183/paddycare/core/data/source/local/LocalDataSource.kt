@@ -22,5 +22,7 @@ class LocalDataSource @Inject constructor(private val paddyDao: PaddyDao) {
 
     suspend fun insertResult(resultList: List<ResultEntity>) = paddyDao.insertResult(resultList)
 
+    fun updateResult(result: ResultEntity) = paddyDao.updateResult(result)
+
     fun deleteResult(resultEntity: ResultEntity) = paddyDao.deleteResult(resultEntity)
 }

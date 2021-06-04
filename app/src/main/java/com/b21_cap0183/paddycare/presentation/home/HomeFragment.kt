@@ -13,8 +13,10 @@ import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.b21_cap0183.paddycare.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
@@ -36,21 +38,25 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fragmentHomeBinding.btnTakePicture.setOnClickListener {
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            photoFile = getPhotoFile(FILE_NAME)
+            takePhoto()
+        }
+    }
 
-            val fileProvider = FileProvider.getUriForFile(
-                requireContext(),
-                "com.b21_cap0183.fileprovider",
-                photoFile
-            )
-            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
-            if (takePictureIntent.resolveActivity(requireActivity().packageManager) != null) {
-                startActivityForResult(takePictureIntent, REQUEST_CODE)
+    private fun takePhoto() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        photoFile = getPhotoFile(FILE_NAME)
 
-            } else {
-                Toast.makeText(requireContext(), "Unable to open Camera", Toast.LENGTH_SHORT).show()
-            }
+        val fileProvider = FileProvider.getUriForFile(
+            requireContext(),
+            "com.b21_cap0183.fileprovider",
+            photoFile
+        )
+        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
+        if (takePictureIntent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_CODE)
+
+        } else {
+            Toast.makeText(requireContext(), "Unable to open Camera", Toast.LENGTH_SHORT).show()
         }
     }
 

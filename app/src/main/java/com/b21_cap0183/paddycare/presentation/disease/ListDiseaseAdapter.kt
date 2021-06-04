@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21_cap0183.paddycare.R
 import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
+import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.databinding.ListViewDiseasesBinding
 import com.b21_cap0183.paddycare.presentation.detail.DetailDiseaseActivity
 import com.bumptech.glide.Glide
@@ -14,23 +15,24 @@ import com.bumptech.glide.request.RequestOptions
 
 class ListDiseaseAdapter : RecyclerView.Adapter<ListDiseaseAdapter.DiseaseViewHolder>() {
 
-    private var listDisease = ArrayList<DiseaseEntity>()
+    private var listDisease = ArrayList<Disease>()
 
-    fun setDisease(disease: List<DiseaseEntity>?) {
+    fun setDisease(disease: List<Disease>?) {
         if (disease == null) return
         this.listDisease.clear()
         this.listDisease.addAll(disease)
+        notifyDataSetChanged()
     }
 
     class DiseaseViewHolder(private val binding: ListViewDiseasesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(diseaseEntity: DiseaseEntity) {
+        fun bind(diseaseEntity: Disease) {
             with(binding) {
                 dTitle.text = diseaseEntity.diseaseName
                 dDesc.text = diseaseEntity.diseaseDescription
 
                 Glide.with(itemView.context)
-                    .load(diseaseEntity.diseasePicture)
+                    .load(diseaseEntity.diseaseImage)
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
                     .error(R.drawable.ic_error)
                     .into(dPicture)
@@ -41,7 +43,6 @@ class ListDiseaseAdapter : RecyclerView.Adapter<ListDiseaseAdapter.DiseaseViewHo
                         DetailDiseaseActivity.EXTRA_DISEASE, diseaseEntity.diseaseId
                     )
                     itemView.context.startActivity(intent)
-                    Log.d("Berhasil", "berhasil diakses")
                 }
             }
         }

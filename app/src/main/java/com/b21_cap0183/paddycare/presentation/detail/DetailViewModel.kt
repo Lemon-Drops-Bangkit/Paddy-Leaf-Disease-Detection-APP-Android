@@ -12,12 +12,12 @@ class DetailViewModel : ViewModel() {
         this.id = id
     }
 
-    fun getDisease(): DiseaseEntity {
-        lateinit var disease: DiseaseEntity
-        val diseaseEntities = DataDummy.generateDiseases()
-        for(diseaseEntity in diseaseEntities) {
-            if (diseaseEntity.diseaseId == id) disease = diseaseEntity
-        }
-        return disease
-    }
+//    fun getDisease(): DiseaseEntity {
+//        lateinit var disease: DiseaseEntity
+//        val diseaseEntities = DataDummy.generateDiseases()
+//        for(diseaseEntity in diseaseEntities) {
+//            if (diseaseEntity.diseaseId == id) disease = diseaseEntity
+//        }
+//        return disease
+//    }
 }

@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21_cap0183.paddycare.databinding.FragmentDiseaseBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DiseaseFragment : Fragment() {
 
     private lateinit var fragmentDiseaseBinding: FragmentDiseaseBinding
+    private val diseaseViewModel: DiseaseViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,14 +31,14 @@ class DiseaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[DiseaseViewModel::class.java]
-            val diseases = viewModel.getDiseases()
 
             val listDiseaseAdapter = ListDiseaseAdapter()
-            listDiseaseAdapter.setDisease(diseases)
+
+            diseaseViewModel.diseases.observe(viewLifecycleOwner, { disease ->
+                if (disease != null) {
+                    listDiseaseAdapter.setDisease(disease.data)
+                }
+            })
 
             with(fragmentDiseaseBinding.rvListDisease) {
                 layoutManager = LinearLayoutManager(context)

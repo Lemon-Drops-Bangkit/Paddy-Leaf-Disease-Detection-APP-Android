@@ -21,6 +21,6 @@ data class DiseaseEntity(
     @ColumnInfo(name = "diseaseSolution")
     var diseaseSolution: String,
 
-    @ColumnInfo(name = "diseasePicture")
-    var diseasePicture: Int
+    @ColumnInfo(name = "diseaseImage")
+    var diseaseImage: String
 )

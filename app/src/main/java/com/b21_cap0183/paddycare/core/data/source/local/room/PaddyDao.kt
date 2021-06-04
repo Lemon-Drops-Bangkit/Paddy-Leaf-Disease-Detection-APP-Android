@@ -29,6 +29,9 @@ interface PaddyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertResult(result: List<ResultEntity>)
 
+    @Update
+    fun updateResult(result: ResultEntity)
+
     @Delete
     fun deleteResult(result: ResultEntity)
 }

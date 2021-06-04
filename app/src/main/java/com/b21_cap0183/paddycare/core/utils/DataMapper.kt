@@ -10,10 +10,10 @@ object DataMapper {
         input.map {
             val disease = DiseaseEntity(
                 diseaseId = it.id,
-                diseaseName = it.name,
+                diseaseName = it.label,
                 diseaseDescription = it.description,
                 diseaseSolution = it.solution,
-                diseasePicture = it.picture
+                diseaseImage = it.image
             )
             diseaseList.add(disease)
         }
@@ -25,15 +25,17 @@ object DataMapper {
             Disease(
                 diseaseId = it.diseaseId,
                 diseaseName = it.diseaseName,
-                diseaseDesc = it.diseaseDescription,
-                diseasePicture = it.diseasePicture
+                diseaseDescription = it.diseaseDescription,
+                diseaseSolution = it.diseaseSolution,
+                diseaseImage = it.diseaseImage
             )
         }
 
     fun mapDomainToEntity(input: Disease) = Disease(
         diseaseId = input.diseaseId,
         diseaseName = input.diseaseName,
-        diseaseDesc = input.diseaseDesc,
-        diseasePicture = input.diseasePicture
+        diseaseDescription = input.diseaseDescription,
+        diseaseSolution = input.diseaseSolution,
+        diseaseImage = input.diseaseImage
     )
 }

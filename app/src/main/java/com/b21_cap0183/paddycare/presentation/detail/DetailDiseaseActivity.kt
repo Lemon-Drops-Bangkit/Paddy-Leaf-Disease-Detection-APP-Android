@@ -1,14 +1,18 @@
 package com.b21_cap0183.paddycare.presentation.detail
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
+import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.databinding.ActivityDetailDiseaseBinding
 import com.b21_cap0183.paddycare.databinding.ContentDetailBinding
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailDiseaseActivity : AppCompatActivity() {
 
     companion object {
@@ -18,6 +22,8 @@ class DetailDiseaseActivity : AppCompatActivity() {
     private lateinit var activityDetailDiseaseBinding: ActivityDetailDiseaseBinding
     private lateinit var contentDetailBinding: ContentDetailBinding
 
+    private val detailDiseaseViewModel: DetailViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityDetailDiseaseBinding = ActivityDetailDiseaseBinding.inflate(layoutInflater)
@@ -26,24 +32,18 @@ class DetailDiseaseActivity : AppCompatActivity() {
 
         setSupportActionBar(activityDetailDiseaseBinding.toolbar)
 
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[DetailViewModel::class.java]
-
-        val extras = intent.extras
-        if (extras != null) {
-            val diseaseId = extras.getInt(EXTRA_DISEASE)
-                viewModel.setSelectedId(diseaseId)
-                populateDisease(viewModel.getDisease())
-
-        }
-
+        val detailDisease = intent.getParcelableExtra<Disease>(EXTRA_DISEASE)
+        populateDisease(detailDisease)
     }
 
-    private fun populateDisease(diseaseEntity: DiseaseEntity) {
-        supportActionBar?.title = diseaseEntity.diseaseName
-        Glide.with(this)
-                .load(diseaseEntity.diseasePicture)
+    private fun populateDisease(diseaseEntity: Disease?) {
+        if (diseaseEntity != null) {
+            supportActionBar?.title = diseaseEntity.diseaseName
+            Glide.with(this)
+                .load(diseaseEntity.diseaseImage)
                 .into(activityDetailDiseaseBinding.detImage)
-        contentDetailBinding.detDesc.text = diseaseEntity.diseaseDescription
-        contentDetailBinding.detSolution.text = diseaseEntity.diseaseSolution
+            contentDetailBinding.detDesc.text = diseaseEntity.diseaseDescription
+            contentDetailBinding.detSolution.text = diseaseEntity.diseaseSolution
+        }
     }
 }
