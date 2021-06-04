@@ -40,7 +40,7 @@ class ListDiseaseAdapter : RecyclerView.Adapter<ListDiseaseAdapter.DiseaseViewHo
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailDiseaseActivity::class.java)
                     intent.putExtra(
-                        DetailDiseaseActivity.EXTRA_DISEASE, diseaseEntity.diseaseId
+                        DetailDiseaseActivity.EXTRA_DISEASE, diseaseEntity
                     )
                     itemView.context.startActivity(intent)
                 }

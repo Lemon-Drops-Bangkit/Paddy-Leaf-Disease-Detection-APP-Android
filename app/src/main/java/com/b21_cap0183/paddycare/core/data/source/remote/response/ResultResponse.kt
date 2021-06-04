@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ResultResponse(
     @field: SerializedName("id")
-    val id: String,
+    val id: Int,
 
     @field:SerializedName("label")
     val label: String,

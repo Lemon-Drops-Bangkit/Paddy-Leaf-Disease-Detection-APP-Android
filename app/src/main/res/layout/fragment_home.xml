@@ -113,8 +113,6 @@
                 android:text="@string/see_result" />
 
         </RelativeLayout>
-
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -141,7 +139,12 @@
             android:text="@string/take_picture"
             app:icon="@drawable/ic_outline_camera" />
 
-    </androidx.cardview.widget.CardView>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
