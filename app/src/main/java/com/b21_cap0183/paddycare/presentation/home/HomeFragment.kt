@@ -11,12 +11,16 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.b21_cap0183.paddycare.databinding.FragmentHomeBinding
 import com.b21_cap0183.paddycare.presentation.detail.DetailDiseaseActivity
+import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.observeOn
 import java.io.File
@@ -27,9 +31,7 @@ class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
-    private lateinit var photoFile: File
-    private val FILE_NAME = "photo.jpg"
-    private val REQUEST_CODE = 42
+    private lateinit var photo: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,52 +46,48 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         showLoading(false)
-        fragmentHomeBinding.btnTakePicture.setOnClickListener {
+
+        photo = fragmentHomeBinding.picture
+        val button = fragmentHomeBinding.btnTakePicture
+
+        button.setOnClickListener {
             takePhoto()
         }
     }
 
     private fun takePhoto() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        photoFile = getPhotoFile(FILE_NAME)
+        ImagePicker.with(this)
+            .crop()	    			            //Crop image(Optional), Check Customization for more option
+            .compress(1024)			//Final image size will be less than 1 MB(Optional)
+            .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+            //  Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker
+            .saveDir(File(activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!, "ImagePicker"))
+            .createIntent { intent ->
+                startForProfileImageResult.launch(intent)
+            }
+    }
 
-        val fileProvider = FileProvider.getUriForFile(
-            requireContext(),
-            "com.b21_cap0183.fileprovider",
-            photoFile
-        )
-        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
-        if (takePictureIntent.resolveActivity(requireActivity().packageManager) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_CODE)
-        } else {
-            Toast.makeText(requireContext(), "Unable to open Camera", Toast.LENGTH_SHORT).show()
+    private val startForProfileImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            val resultCode = result.resultCode
+            val data = result.data
+
+            when (resultCode) {
+                Activity.RESULT_OK -> {
+                    //Image Uri will not be null for RESULT_OK
+                    val fileUri = data?.data!!
+
+                    photo.setImageURI(fileUri)
+                }
+                ImagePicker.RESULT_ERROR -> {
+                    Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(context, "Task Cancelled", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-    }
 
-    private fun getPhotoFile(fileName: String): File {
-        val storageDirectory = context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(fileName, ".jpg", storageDirectory)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        showLoading(false)
-        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val takenImage = BitmapFactory.decodeFile(photoFile.absolutePath)
-            fragmentHomeBinding.picture.setImageBitmap(takenImage)
-            fragmentHomeBinding.btnTakePicture.text = "Re-take Picture"
-
-            val delay: Long = 3000
-            Handler(Looper.getMainLooper()).postDelayed({
-                showLoading(true)
-                val intent = Intent(context, DetailDiseaseActivity::class.java)
-                intent.putExtra(DetailDiseaseActivity.EXTRA_DISEASE, 1)
-                startActivity(intent)
-            }, delay)
-            showLoading(false)
-        } else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
-    }
 
     private fun showLoading(state: Boolean) {
         if (state) {
