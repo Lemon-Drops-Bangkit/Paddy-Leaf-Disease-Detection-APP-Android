@@ -55,17 +55,6 @@ class HomeFragment : Fragment() {
         button.setOnClickListener {
             takePhoto()
         }
-
-        homeViewModel.result?.observe(viewLifecycleOwner, { image ->
-            Log.d("Hello", "Passed")
-            if (image != null) {
-                Log.d("Observe", image.data.toString())
-                image.data
-                Toast.makeText(context, image.message, Toast.LENGTH_SHORT).show()
-            } else {
-                Log.d("Observe else", image?.data.toString())
-            }
-        })
     }
 
     private fun takePhoto() {
@@ -93,6 +82,17 @@ class HomeFragment : Fragment() {
 
                     photo.setImageURI(fileUri)
                     homeViewModel.setSelectedFile(mFileUri)
+
+                    homeViewModel.result?.observe(viewLifecycleOwner, { image ->
+                        Log.d("Hello", "Passed")
+                        if (image != null) {
+                            Log.d("Observe", image.data.toString())
+                            image.data
+                            Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Log.d("Observe else", image?.data.toString())
+                        }
+                    })
                 }
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()

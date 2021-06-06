@@ -15,6 +15,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okio.IOException
 import java.io.File
 import java.io.InputStream
 import java.lang.Exception
@@ -53,10 +54,11 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 val response = apiService.postPredict(part)
                 if (response != null) {
                     emit(ApiResponse.Success(response))
+                    Log.d("asdasdasd", response.label)
                 } else {
                     emit(ApiResponse.Empty)
                 }
-            } catch (e: Exception){
+            } catch (e: IOException){
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }
