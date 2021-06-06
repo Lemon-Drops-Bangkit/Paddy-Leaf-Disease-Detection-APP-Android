@@ -8,6 +8,7 @@ import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
+import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.b21_cap0183.paddycare.databinding.FragmentHomeBinding
@@ -53,6 +55,17 @@ class HomeFragment : Fragment() {
         button.setOnClickListener {
             takePhoto()
         }
+
+        homeViewModel.result?.observe(viewLifecycleOwner, { image ->
+            Log.d("Hello", "Passed")
+            if (image != null) {
+                Log.d("Observe", image.data.toString())
+                image.data
+                Toast.makeText(context, image.message, Toast.LENGTH_SHORT).show()
+            } else {
+                Log.d("Observe else", image?.data.toString())
+            }
+        })
     }
 
     private fun takePhoto() {
@@ -76,8 +89,10 @@ class HomeFragment : Fragment() {
                 Activity.RESULT_OK -> {
                     //Image Uri will not be null for RESULT_OK
                     val fileUri = data?.data!!
+                    val mFileUri = fileUri.toFile()
 
                     photo.setImageURI(fileUri)
+                    homeViewModel.setSelectedFile(mFileUri)
                 }
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()

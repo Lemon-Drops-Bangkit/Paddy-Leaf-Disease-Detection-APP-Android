@@ -9,6 +9,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
+import java.io.InputStream
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -34,10 +42,15 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getResult(): Flow<ApiResponse<ResultResponse>> {
+    suspend fun getResult(image: File): Flow<ApiResponse<ResultResponse>> {
         return flow {
             try {
-                val response = apiService.postPredict()
+                val part = MultipartBody.Part.createFormData(
+                    "images",
+                    image.name,
+                    image.asRequestBody("images/*".toMediaType())
+                )
+                val response = apiService.postPredict(part)
                 if (response != null) {
                     emit(ApiResponse.Success(response))
                 } else {

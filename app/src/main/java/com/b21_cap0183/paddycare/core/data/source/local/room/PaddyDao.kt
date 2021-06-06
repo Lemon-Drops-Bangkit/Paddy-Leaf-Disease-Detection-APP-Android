@@ -20,6 +20,8 @@ interface PaddyDao {
     @Update
     fun updateDisease(disease: DiseaseEntity)
 
+    //Result
+
     @Query("SELECT * FROM paddyresult ORDER BY resultId ASC")
     fun getAllResult(): Flow<List<ResultEntity>>
 
@@ -27,7 +29,7 @@ interface PaddyDao {
     fun getResultById(id: Int): Flow<ResultEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertResult(result: List<ResultEntity>)
+    suspend fun insertResult(result: ResultEntity)
 
     @Update
     fun updateResult(result: ResultEntity)

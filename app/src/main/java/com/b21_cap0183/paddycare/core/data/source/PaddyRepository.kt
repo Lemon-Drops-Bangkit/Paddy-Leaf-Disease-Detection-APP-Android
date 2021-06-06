@@ -12,7 +12,9 @@ import com.b21_cap0183.paddycare.core.domain.model.Result
 import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
 import com.b21_cap0183.paddycare.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.map
+import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -42,10 +44,6 @@ class PaddyRepository @Inject constructor(
 
         }.asFlow()
 
-    override fun getDiseaseById(id: Int): LiveData<Resource<Disease>> {
-        TODO("Not yet implemented")
-    }
-
     override fun getAllResult(): LiveData<Resource<List<Result>>> {
         TODO("Not yet implemented")
     }
@@ -53,18 +51,18 @@ class PaddyRepository @Inject constructor(
     override fun getResultById(id: Int): Flow<Resource<Result>> =
         object: NetworkBoundResource<Result, ResultResponse>() {
             override fun loadFromDB(): Flow<Result> {
-                TODO("belum tau euy")
+                return localDataSource.getResultById(id).map { DataMapper.mapDomainToEntity(it) }
             }
 
             override fun shouldFetch(data: Result?): Boolean =
                 data == null || data.resultId != null
 
             override suspend fun createCall(): Flow<ApiResponse<ResultResponse>> =
-                remoteDataSource.getResult()
+                TODO("gatau euy")
 
             override suspend fun saveCallResult(data: ResultResponse) {
                 val resultEntity = ResultEntity(
-                    resultId = data.id.toInt(),
+                    resultId = data.id,
                     resultName = data.label,
                     resultDesc = data.description,
                     resultSolution = data.solution
@@ -73,4 +71,26 @@ class PaddyRepository @Inject constructor(
             }
         }.asFlow()
 
+    override fun postResult(image: File): Flow<Resource<Result>> =
+        object: NetworkBoundResource<Result, ResultResponse>() {
+            override fun loadFromDB(): Flow<Result> {
+                return emptyList<Result>().asFlow()
+            }
+
+            override fun shouldFetch(data: Result?): Boolean =
+                true
+
+            override suspend fun createCall(): Flow<ApiResponse<ResultResponse>> =
+                remoteDataSource.getResult(image)
+
+            override suspend fun saveCallResult(data: ResultResponse) {
+                val resultEntity = ResultEntity(
+                    resultId = data.id,
+                    resultName = data.label,
+                    resultDesc = data.description,
+                    resultSolution = data.solution
+                )
+                localDataSource.insertResult(resultEntity)
+            }
+        }.asFlow()
 }

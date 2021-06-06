@@ -7,7 +7,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
     private var result: Flow<Resource<ResultType>> = flow {
         emit(Resource.Loading())
-        val dbSource = loadFromDB().first()
+        val dbSource = loadFromDB().firstOrNull()
         if (shouldFetch(dbSource)) {
             emit(Resource.Loading())
             when (val apiResponse = createCall().first()) {

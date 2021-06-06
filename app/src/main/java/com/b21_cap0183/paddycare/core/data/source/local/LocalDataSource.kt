@@ -12,15 +12,13 @@ class LocalDataSource @Inject constructor(private val paddyDao: PaddyDao) {
 
     fun getAllDisease(): Flow<List<DiseaseEntity>> = paddyDao.getAllDisease()
 
-    fun getDiseaseById(id: Int): Flow<DiseaseEntity> = paddyDao.getDiseaseById(id)
-
     suspend fun insertDisease(diseaseList: List<DiseaseEntity>) = paddyDao.insertDisease(diseaseList)
 
     fun getAllResult(): Flow<List<ResultEntity>> = paddyDao.getAllResult()
 
     fun getResultById(id: Int): Flow<ResultEntity> = paddyDao.getResultById(id)
 
-    suspend fun insertResult(resultList: List<ResultEntity>) = paddyDao.insertResult(resultList)
+    suspend fun insertResult(resultList: ResultEntity) = paddyDao.insertResult(resultList)
 
     fun updateResult(result: ResultEntity) = paddyDao.updateResult(result)
 
