@@ -3,13 +3,11 @@ package com.b21_cap0183.paddycare.presentation.detail
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
+import com.b21_cap0183.paddycare.R
 import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.databinding.ActivityDetailDiseaseBinding
 import com.b21_cap0183.paddycare.databinding.ContentDetailBinding
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +29,11 @@ class DetailDiseaseActivity : AppCompatActivity() {
         contentDetailBinding = activityDetailDiseaseBinding.contentDetail
 
         setSupportActionBar(activityDetailDiseaseBinding.toolbar)
+
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
 
         val detailDisease = intent.getParcelableExtra<Disease>(EXTRA_DISEASE)
         populateDisease(detailDisease)

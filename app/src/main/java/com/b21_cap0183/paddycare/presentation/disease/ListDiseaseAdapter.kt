@@ -1,12 +1,10 @@
 package com.b21_cap0183.paddycare.presentation.disease
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21_cap0183.paddycare.R
-import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
 import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.databinding.ListViewDiseasesBinding
 import com.b21_cap0183.paddycare.presentation.detail.DetailDiseaseActivity
@@ -29,7 +27,7 @@ class ListDiseaseAdapter : RecyclerView.Adapter<ListDiseaseAdapter.DiseaseViewHo
         fun bind(diseaseEntity: Disease) {
             with(binding) {
                 dTitle.text = diseaseEntity.diseaseName
-                dDesc.text = diseaseEntity.diseaseDescription
+                dDesc.text = "See more about ${diseaseEntity.diseaseName}.."
 
                 Glide.with(itemView.context)
                     .load(diseaseEntity.diseaseImage)

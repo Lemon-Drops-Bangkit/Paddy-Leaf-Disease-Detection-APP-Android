@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b21_cap0183.paddycare.databinding.FragmentDiseaseBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,5 +45,7 @@ class DiseaseFragment : Fragment() {
                 adapter = listDiseaseAdapter
             }
         }
+
+
     }
 }

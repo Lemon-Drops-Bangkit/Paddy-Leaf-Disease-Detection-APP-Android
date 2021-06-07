@@ -58,7 +58,7 @@ class PaddyRepository @Inject constructor(
                 data == null || data.resultId != null
 
             override suspend fun createCall(): Flow<ApiResponse<ResultResponse>> =
-                TODO("gatau euy")
+                TODO("gatau euy, ayoo semangat pasti bisaaa, bisa gila")
 
             override suspend fun saveCallResult(data: ResultResponse) {
                 val resultEntity = ResultEntity(
