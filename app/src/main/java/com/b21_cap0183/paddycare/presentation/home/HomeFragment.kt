@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
                                 }
                                 is Resource.Success -> {
                                     val intent = Intent(context, ResultDetectionActivity::class.java).apply {
-                                        putExtra(ResultDetectionActivity.EXTRA_ID, image.data)
+                                        putExtra(ResultDetectionActivity.EXTRA_RESULT, image.data)
                                     }
                                     startActivity(intent)
                                 }
