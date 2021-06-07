@@ -29,7 +29,7 @@ interface PaddyDao {
     fun getResultById(id: Int): Flow<ResultEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertResult(result: ResultEntity)
+    suspend fun insertResult(result: List<ResultEntity>)
 
     @Update
     fun updateResult(result: ResultEntity)

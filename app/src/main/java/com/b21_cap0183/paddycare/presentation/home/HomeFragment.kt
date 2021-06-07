@@ -1,8 +1,13 @@
 package com.b21_cap0183.paddycare.presentation.home
 
 import android.app.Activity
+import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,13 +16,19 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.b21_cap0183.paddycare.core.data.source.Resource
 import com.b21_cap0183.paddycare.databinding.FragmentHomeBinding
+import com.b21_cap0183.paddycare.presentation.detail.DetailDiseaseActivity
+import com.b21_cap0183.paddycare.presentation.result.ResultDetectionActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.observeOn
 import java.io.File
+import kotlin.coroutines.coroutineContext
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -52,7 +63,7 @@ class HomeFragment : Fragment() {
         ImagePicker.with(this)
             .crop()	    			            //Crop image(Optional), Check Customization for more option
             .compress(1024)			//Final image size will be less than 1 MB(Optional)
-            .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(O ptional)
+            .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
             //  Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker
             .saveDir(File(activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!, "ImagePicker"))
             .createIntent { intent ->
@@ -75,21 +86,27 @@ class HomeFragment : Fragment() {
                     homeViewModel.setSelectedFile(mFileUri)
 
                     homeViewModel.result.observe(viewLifecycleOwner, { image ->
-                        Log.d("Hello", "Passed")
                         if (image != null) {
-                            Log.d("Observe", image.data.toString())
-                            image.data
-                            Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Log.d("Observe else", image?.data.toString())
+                            when (image) {
+                                is Resource.Loading -> {
+                                    Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
+                                }
+                                is Resource.Success -> {
+                                    val intent = Intent(context, ResultDetectionActivity::class.java).apply {
+                                        putExtra(ResultDetectionActivity.EXTRA_ID, image.data)
+                                    }
+                                    startActivity(intent)
+                                }
+                                is Resource.Error -> {
+
+                                }
+                            }
                         }
                     })
                 }
-
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
                 }
-
                 else -> {
                     Toast.makeText(context, "Task Cancelled", Toast.LENGTH_SHORT).show()
                 }

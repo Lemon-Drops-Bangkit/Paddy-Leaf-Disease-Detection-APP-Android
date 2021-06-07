@@ -54,7 +54,6 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 val response = apiService.postPredict(part)
                 if (response != null) {
                     emit(ApiResponse.Success(response))
-                    Log.d("asdasdasd", response.label)
                 } else {
                     emit(ApiResponse.Empty)
                 }

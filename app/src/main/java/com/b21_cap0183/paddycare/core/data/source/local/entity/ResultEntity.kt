@@ -10,7 +10,7 @@ data class ResultEntity(
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "resultId")
-    var resultId: Int,
+    var resultId: Long,
 
     @ColumnInfo(name = "resultName")
     var resultName: String,

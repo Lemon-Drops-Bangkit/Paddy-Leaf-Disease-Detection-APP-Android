@@ -84,12 +84,13 @@ class PaddyRepository @Inject constructor(
                 remoteDataSource.getResult(image)
 
             override suspend fun saveCallResult(data: ResultResponse) {
-                val resultEntity = ResultEntity(
-                    resultId = data.id,
-                    resultName = data.label,
-                    resultDesc = data.description,
-                    resultSolution = data.solution
-                )
+                val resultEntity = ArrayList<ResultEntity>()
+                    resultEntity.add(ResultEntity(
+                        resultId = data.id,
+                        resultName = data.label,
+                        resultDesc = data.description,
+                        resultSolution = data.solution
+                    ))
                 localDataSource.insertResult(resultEntity)
             }
         }.asFlow()

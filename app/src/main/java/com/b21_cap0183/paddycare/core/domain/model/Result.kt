@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Result(
-    var resultId: Int,
+    var resultId: Long,
     var resultName: String,
     var resultDesc: String,
     var resultSolution: String

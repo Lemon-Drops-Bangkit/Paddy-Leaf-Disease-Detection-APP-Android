@@ -20,8 +20,6 @@ class DetailDiseaseActivity : AppCompatActivity() {
     private lateinit var activityDetailDiseaseBinding: ActivityDetailDiseaseBinding
     private lateinit var contentDetailBinding: ContentDetailBinding
 
-    private val detailDiseaseViewModel: DetailViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityDetailDiseaseBinding = ActivityDetailDiseaseBinding.inflate(layoutInflater)
