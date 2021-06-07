@@ -48,6 +48,16 @@ object DataMapper {
             )
         }
 
+    fun mapResultEntitiesToDomain(input: List<ResultEntity>): List<Result> =
+        input.map {
+            Result(
+                resultId = it.resultId,
+                resultName = it.resultName,
+                resultDesc = it.resultDesc,
+                resultSolution = it.resultSolution
+            )
+        }
+
     fun mapResultEntityToDomain(input: ResultEntity): Result =
         Result(
             resultId = input.resultId,

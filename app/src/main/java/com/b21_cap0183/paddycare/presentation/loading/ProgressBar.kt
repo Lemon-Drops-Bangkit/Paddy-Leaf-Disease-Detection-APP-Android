@@ -1,7 +1,7 @@
 package com.b21_cap0183.paddycare.presentation.loading
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.b21_cap0183.paddycare.R
 
 class ProgressBar : AppCompatActivity() {

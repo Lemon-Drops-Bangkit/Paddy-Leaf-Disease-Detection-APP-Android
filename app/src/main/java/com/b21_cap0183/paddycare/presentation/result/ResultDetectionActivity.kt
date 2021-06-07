@@ -1,12 +1,10 @@
 package com.b21_cap0183.paddycare.presentation.result
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.b21_cap0183.paddycare.R
-import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import com.b21_cap0183.paddycare.core.domain.model.Result
 import com.b21_cap0183.paddycare.databinding.ActivityResultDetectionBinding
-import com.b21_cap0183.paddycare.databinding.ContentDetailBinding
 import com.b21_cap0183.paddycare.databinding.ContentDetailResultBinding
 
 class ResultDetectionActivity : AppCompatActivity() {
@@ -24,12 +22,17 @@ class ResultDetectionActivity : AppCompatActivity() {
         activityResultDetectionBinding = ActivityResultDetectionBinding.inflate(layoutInflater)
         setContentView(activityResultDetectionBinding.root)
 
+        contentDetailResultBinding = activityResultDetectionBinding.contentDetailResult
+
         setSupportActionBar(activityResultDetectionBinding.toolbar)
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
             title = getString(R.string.resultdetection)
+        }
+
+        activityResultDetectionBinding.toolbar.setNavigationOnClickListener {
+            finish()
         }
 
         val detailResult = intent.getParcelableExtra<Result>(EXTRA_RESULT)

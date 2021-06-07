@@ -22,16 +22,22 @@ class DetailDiseaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         activityDetailDiseaseBinding = ActivityDetailDiseaseBinding.inflate(layoutInflater)
         setContentView(activityDetailDiseaseBinding.root)
+
         contentDetailBinding = activityDetailDiseaseBinding.contentDetail
 
         setSupportActionBar(activityDetailDiseaseBinding.toolbar)
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
+
+        activityDetailDiseaseBinding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
 
         val detailDisease = intent.getParcelableExtra<Disease>(EXTRA_DISEASE)
         populateDisease(detailDisease)

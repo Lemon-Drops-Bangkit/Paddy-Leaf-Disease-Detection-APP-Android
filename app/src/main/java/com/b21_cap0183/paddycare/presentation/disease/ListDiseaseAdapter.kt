@@ -22,7 +22,7 @@ class ListDiseaseAdapter : RecyclerView.Adapter<ListDiseaseAdapter.DiseaseViewHo
         notifyDataSetChanged()
     }
 
-    class DiseaseViewHolder(private val binding: ListViewDiseasesBinding) :
+    inner class DiseaseViewHolder(private val binding: ListViewDiseasesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(diseaseEntity: Disease) {
             with(binding) {

@@ -9,16 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okio.IOException
 import java.io.File
-import java.io.InputStream
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -57,7 +52,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 } else {
                     emit(ApiResponse.Empty)
                 }
-            } catch (e: IOException){
+            } catch (e: IOException) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())
             }

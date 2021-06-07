@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PaddyCare"
         android:usesCleartextTraffic="true">
-        <activity android:name=".presentation.loading.ProgressBar"></activity>
+        <activity android:name=".presentation.loading.ProgressBar" />
         <activity
             android:name=".presentation.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -33,8 +33,10 @@
             android:theme="@style/Theme.PaddyCare.NoActionBar" />
         <activity
             android:name=".presentation.detail.DetailDiseaseActivity"
-            android:theme="@style/Theme.PaddyCare.NoActionBar"></activity>
-        <activity android:name=".presentation.result.ResultDetectionActivity" />
+            android:theme="@style/Theme.PaddyCare.NoActionBar" />
+        <activity
+            android:name=".presentation.result.ResultDetectionActivity"
+            android:theme="@style/Theme.PaddyCare.NoActionBar" />
     </application>
 
 </manifest>

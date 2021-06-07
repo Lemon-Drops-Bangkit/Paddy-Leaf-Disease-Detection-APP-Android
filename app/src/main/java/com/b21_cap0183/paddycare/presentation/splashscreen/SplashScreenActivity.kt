@@ -1,10 +1,9 @@
 package com.b21_cap0183.paddycare.presentation.splashscreen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.b21_cap0183.paddycare.R
+import androidx.appcompat.app.AppCompatActivity
 import com.b21_cap0183.paddycare.databinding.ActivitySplashScreenBinding
 import com.b21_cap0183.paddycare.presentation.main.MainActivity
 

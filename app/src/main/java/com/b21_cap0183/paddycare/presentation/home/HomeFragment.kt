@@ -2,13 +2,8 @@ package com.b21_cap0183.paddycare.presentation.home
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
-import android.os.Handler
-import android.os.Looper
-import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,19 +11,15 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.FileProvider
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.b21_cap0183.paddycare.core.data.source.Resource
 import com.b21_cap0183.paddycare.databinding.FragmentHomeBinding
-import com.b21_cap0183.paddycare.presentation.detail.DetailDiseaseActivity
 import com.b21_cap0183.paddycare.presentation.result.ResultDetectionActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.observeOn
 import java.io.File
-import kotlin.coroutines.coroutineContext
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -61,9 +52,9 @@ class HomeFragment : Fragment() {
 
     private fun takePhoto() {
         ImagePicker.with(this)
-            .crop()	    			            //Crop image(Optional), Check Customization for more option
-            .compress(1024)			//Final image size will be less than 1 MB(Optional)
-            .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+            .crop()                                //Crop image(Optional), Check Customization for more option
+            .compress(1024)            //Final image size will be less than 1 MB(Optional)
+            .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
             //  Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker
             .saveDir(File(activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!, "ImagePicker"))
             .createIntent { intent ->
@@ -98,7 +89,7 @@ class HomeFragment : Fragment() {
                                     startActivity(intent)
                                 }
                                 is Resource.Error -> {
-
+                                    Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }

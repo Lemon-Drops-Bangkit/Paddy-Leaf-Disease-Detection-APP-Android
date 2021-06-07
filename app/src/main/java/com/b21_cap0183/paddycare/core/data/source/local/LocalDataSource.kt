@@ -10,17 +10,17 @@ import javax.inject.Singleton
 @Singleton
 class LocalDataSource @Inject constructor(private val paddyDao: PaddyDao) {
 
+    //Dictionary
+
     fun getAllDisease(): Flow<List<DiseaseEntity>> = paddyDao.getAllDisease()
 
     suspend fun insertDisease(diseaseList: List<DiseaseEntity>) = paddyDao.insertDisease(diseaseList)
 
+    //Result
+
     fun getAllResult(): Flow<List<ResultEntity>> = paddyDao.getAllResult()
 
-    fun getResultById(id: Int): Flow<ResultEntity> = paddyDao.getResultById(id)
-
     suspend fun insertResult(resultList: List<ResultEntity>) = paddyDao.insertResult(resultList)
-
-    fun updateResult(result: ResultEntity) = paddyDao.updateResult(result)
 
     fun deleteResult(resultEntity: ResultEntity) = paddyDao.deleteResult(resultEntity)
 }
