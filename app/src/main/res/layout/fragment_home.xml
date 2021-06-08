@@ -158,6 +158,17 @@
             android:text="@string/take_picture"
             app:icon="@drawable/ic_outline_camera" />
 
+        <Button
+            android:id="@+id/btn_upload"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="100dp"
+            android:background="@drawable/background"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="16dp"
+
+            android:text="uplod" />
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"

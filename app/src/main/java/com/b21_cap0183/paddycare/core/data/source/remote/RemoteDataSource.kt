@@ -47,11 +47,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                     image.asRequestBody("images/*".toMediaType())
                 )
                 val response = apiService.postPredict(part)
-                if (response != null) {
-                    emit(ApiResponse.Success(response))
-                } else {
-                    emit(ApiResponse.Empty)
-                }
+                emit(ApiResponse.Success(response))
             } catch (e: IOException) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e("RemoteDataSource", e.toString())

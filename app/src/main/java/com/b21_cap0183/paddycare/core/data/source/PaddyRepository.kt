@@ -1,8 +1,6 @@
 package com.b21_cap0183.paddycare.core.data.source
 
-import androidx.core.net.toUri
 import com.b21_cap0183.paddycare.core.data.source.local.LocalDataSource
-import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import com.b21_cap0183.paddycare.core.data.source.remote.RemoteDataSource
 import com.b21_cap0183.paddycare.core.data.source.remote.network.ApiResponse
 import com.b21_cap0183.paddycare.core.data.source.remote.response.DiseaseResponse
@@ -11,8 +9,9 @@ import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.core.domain.model.Result
 import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
 import com.b21_cap0183.paddycare.core.utils.DataMapper
-import com.b21_cap0183.paddycare.core.utils.DateHelper
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.map
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -65,31 +64,25 @@ class PaddyRepository @Inject constructor(
     override fun postResult(image: File): Flow<Resource<Result>> =
         object : NetworkBoundResource<Result, ResultResponse>() {
             override fun loadFromDB(): Flow<Result> {
-                return emptyList<Result>().asFlow()
+                return localDataSource.getResult().map {
+                    when {
+                        it.size == 1 -> DataMapper.mapEntityToDomain(it[0])
+                        it.size > 1 -> DataMapper.mapEntityToDomain(it[it.size - 1])
+                        else -> Result()
+                    }
+                }
             }
 
             override fun shouldFetch(data: Result?): Boolean =
-                true
+                data?.resultImage != image.toString()
+//                data?.resultImage == null || data.resultId == null
 
             override suspend fun createCall(): Flow<ApiResponse<ResultResponse>> =
                 remoteDataSource.getResult(image)
 
             override suspend fun saveCallResult(data: ResultResponse) {
-                val resultEntity = ArrayList<ResultEntity>()
-                resultEntity.add(ResultEntity(
-                    resultId = data.id,
-                    resultDate = DateHelper.getCurrentDate(),
-                    resultName = data.label,
-                    resultDesc = data.description,
-                    resultSolution = data.solution,
-                    resultImage = image.toUri().toString()
-                ))
+                val resultEntity = DataMapper.mapResultResponseToEntity(data, image)
                 localDataSource.insertResult(resultEntity)
             }
         }.asFlow()
-
-//    override fun deleteResult(resultEntity: ResultEntity) =
-//        localDataSource.deleteResult(resultEntity)
-
-
 }

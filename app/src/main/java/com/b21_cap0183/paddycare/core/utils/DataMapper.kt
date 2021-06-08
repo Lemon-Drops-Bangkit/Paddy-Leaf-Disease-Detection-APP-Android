@@ -7,6 +7,7 @@ import com.b21_cap0183.paddycare.core.data.source.remote.response.DiseaseRespons
 import com.b21_cap0183.paddycare.core.data.source.remote.response.ResultResponse
 import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.core.domain.model.Result
+import java.io.File
 
 object DataMapper {
     fun mapResponsesToEntities(input: List<DiseaseResponse>): List<DiseaseEntity> {
@@ -40,17 +41,6 @@ object DataMapper {
         return resultList
     }
 
-//    fun mapResultResponseToEntity(input: ResultResponse): ResultEntity {
-//        val resultEntity = ArrayList<ResultEntity>()
-//        resultEntity.add(ResultEntity(
-//            resultId = input.id,
-//            resultName = input.label,
-//            resultDesc = input.description,
-//            resultSolution = input.solution,
-//            resultImage = input.toString()
-//        ))
-//    }
-
     fun mapEntitiesToDomain(input: List<DiseaseEntity>): List<Disease> =
         input.map {
             Disease(
@@ -73,4 +63,26 @@ object DataMapper {
                 resultDate = it.resultDate
             )
         }
+
+    fun mapEntityToDomain(input: ResultEntity): Result =
+        Result(
+            resultId = input.resultId,
+            resultName = input.resultName,
+            resultDesc = input.resultDesc,
+            resultSolution = input.resultSolution,
+            resultImage = input.resultImage
+        )
+
+    fun mapResultResponseToEntity(input: ResultResponse, image: File) : List<ResultEntity> {
+        val resultEntity = ArrayList<ResultEntity>()
+        resultEntity.add(ResultEntity(
+            resultId = input.id,
+            resultDate = "",
+            resultName = input.label,
+            resultDesc = input.description,
+            resultSolution = input.solution,
+            resultImage = image.toUri().toString()
+        ))
+        return resultEntity
+    }
 }

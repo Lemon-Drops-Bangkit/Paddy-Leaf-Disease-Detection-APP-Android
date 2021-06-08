@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Result(
-    var resultId: Long,
-    var resultDate: String,
-    var resultName: String,
-    var resultDesc: String,
-    var resultSolution: String,
-    var resultImage: String
+    var resultId: Long? = null,
+    var resultDate: String? = null,
+    var resultName: String? = null,
+    var resultDesc: String? = null,
+    var resultSolution: String? = null,
+    var resultImage: String? = null
 ) : Parcelable

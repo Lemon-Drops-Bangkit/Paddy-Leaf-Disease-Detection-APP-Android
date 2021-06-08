@@ -1,12 +1,12 @@
 package com.b21_cap0183.paddycare.core.data.source
 
+import android.util.Log
 import com.b21_cap0183.paddycare.core.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.flow.*
 
 abstract class NetworkBoundResource<ResultType, RequestType> {
 
     private var result: Flow<Resource<ResultType>> = flow {
-        emit(Resource.Loading())
         val dbSource = loadFromDB().firstOrNull()
         if (shouldFetch(dbSource)) {
             emit(Resource.Loading())

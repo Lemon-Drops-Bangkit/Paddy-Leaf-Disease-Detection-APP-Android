@@ -16,6 +16,13 @@ class HomeViewModel @Inject constructor(paddyUseCase: PaddyUseCase) : ViewModel(
         this._image.value = image
     }
 
+    private var _id = MutableLiveData<Long>()
+    private val id: LiveData<Long> get() = _id
+
+    fun setSelectedFile(id: Long) {
+        this._id.value = id
+    }
+
     val result = Transformations.switchMap(image) { image ->
         paddyUseCase.postResult(image).asLiveData()
     }

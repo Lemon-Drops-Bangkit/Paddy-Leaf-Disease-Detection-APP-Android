@@ -20,6 +20,8 @@ class LocalDataSource @Inject constructor(private val paddyDao: PaddyDao) {
 
     fun getAllResult(): Flow<List<ResultEntity>> = paddyDao.getAllResult()
 
+    fun getResult(): Flow<List<ResultEntity>> = paddyDao.getResult()
+
     suspend fun insertResult(resultList: List<ResultEntity>) = paddyDao.insertResult(resultList)
 
     fun deleteResult(resultEntity: ResultEntity) = paddyDao.deleteResult(resultEntity)

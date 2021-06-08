@@ -25,8 +25,8 @@ interface PaddyDao {
     @Query("SELECT * FROM paddyresult ORDER BY resultId DESC")
     fun getAllResult(): Flow<List<ResultEntity>>
 
-    @Query("SELECT * FROM paddyresult WHERE resultId = :id")
-    fun getResultById(id: Int): Flow<ResultEntity>
+    @Query("SELECT * FROM paddyresult")
+    fun getResult(): Flow<List<ResultEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertResult(result: List<ResultEntity>)
