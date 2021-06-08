@@ -83,8 +83,10 @@ class HomeFragment : Fragment() {
                                     Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
                                 }
                                 is Resource.Success -> {
+                                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
                                     val intent = Intent(context, ResultDetectionActivity::class.java).apply {
                                         putExtra(ResultDetectionActivity.EXTRA_RESULT, image.data)
+                                        putExtra(ResultDetectionActivity.EXTRA_IMAGE, fileUri.toString())
                                     }
                                     startActivity(intent)
                                 }

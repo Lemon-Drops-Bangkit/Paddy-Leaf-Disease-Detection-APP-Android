@@ -1,5 +1,6 @@
 package com.b21_cap0183.paddycare.core.data.source
 
+import androidx.core.net.toUri
 import com.b21_cap0183.paddycare.core.data.source.local.LocalDataSource
 import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import com.b21_cap0183.paddycare.core.data.source.remote.RemoteDataSource
@@ -78,7 +79,8 @@ class PaddyRepository @Inject constructor(
                     resultId = data.id,
                     resultName = data.label,
                     resultDesc = data.description,
-                    resultSolution = data.solution
+                    resultSolution = data.solution,
+                    resultImage = image.toUri().toString()
                 ))
                 localDataSource.insertResult(resultEntity)
             }

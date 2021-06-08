@@ -1,5 +1,6 @@
 package com.b21_cap0183.paddycare.core.utils
 
+import androidx.core.net.toUri
 import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
 import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import com.b21_cap0183.paddycare.core.data.source.remote.response.DiseaseResponse
@@ -30,12 +31,24 @@ object DataMapper {
                 resultId = it.id,
                 resultName = it.label,
                 resultDesc = it.description,
-                resultSolution = it.solution
+                resultSolution = it.solution,
+                resultImage = ""
             )
             resultList.add(result)
         }
         return resultList
     }
+
+//    fun mapResultResponseToEntity(input: ResultResponse): ResultEntity {
+//        val resultEntity = ArrayList<ResultEntity>()
+//        resultEntity.add(ResultEntity(
+//            resultId = input.id,
+//            resultName = input.label,
+//            resultDesc = input.description,
+//            resultSolution = input.solution,
+//            resultImage = input.toString()
+//        ))
+//    }
 
     fun mapEntitiesToDomain(input: List<DiseaseEntity>): List<Disease> =
         input.map {
@@ -54,22 +67,8 @@ object DataMapper {
                 resultId = it.resultId,
                 resultName = it.resultName,
                 resultDesc = it.resultDesc,
-                resultSolution = it.resultSolution
+                resultSolution = it.resultSolution,
+                resultImage = it.resultImage
             )
         }
-
-    fun mapResultEntityToDomain(input: ResultEntity): Result =
-        Result(
-            resultId = input.resultId,
-            resultName = input.resultName,
-            resultDesc = input.resultDesc,
-            resultSolution = input.resultSolution
-        )
-
-    fun mapDomainToEntity(input: ResultEntity) = Result(
-        resultId = input.resultId,
-        resultName = input.resultName,
-        resultDesc = input.resultDesc,
-        resultSolution = input.resultSolution
-    )
 }

@@ -22,7 +22,7 @@ interface PaddyDao {
 
     //Result
 
-    @Query("SELECT * FROM paddyresult ORDER BY resultId ASC")
+    @Query("SELECT * FROM paddyresult ORDER BY resultId DESC")
     fun getAllResult(): Flow<List<ResultEntity>>
 
     @Query("SELECT * FROM paddyresult WHERE resultId = :id")

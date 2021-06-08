@@ -19,5 +19,8 @@ data class ResultEntity(
     var resultDesc: String,
 
     @ColumnInfo(name = "resultSolution")
-    var resultSolution: String
+    var resultSolution: String,
+
+    @ColumnInfo(name = "resultImage")
+    var resultImage: String
 )

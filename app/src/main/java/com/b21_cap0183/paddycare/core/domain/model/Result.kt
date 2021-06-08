@@ -8,5 +8,6 @@ data class Result(
     var resultId: Long,
     var resultName: String,
     var resultDesc: String,
-    var resultSolution: String
+    var resultSolution: String,
+    var resultImage: String
 ) : Parcelable
