@@ -32,7 +32,8 @@ object DataMapper {
                 resultName = it.label,
                 resultDesc = it.description,
                 resultSolution = it.solution,
-                resultImage = ""
+                resultImage = "",
+                resultDate = ""
             )
             resultList.add(result)
         }
@@ -68,7 +69,8 @@ object DataMapper {
                 resultName = it.resultName,
                 resultDesc = it.resultDesc,
                 resultSolution = it.resultSolution,
-                resultImage = it.resultImage
+                resultImage = it.resultImage,
+                resultDate = it.resultDate
             )
         }
 }

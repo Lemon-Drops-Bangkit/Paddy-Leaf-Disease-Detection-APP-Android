@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Result(
     var resultId: Long,
+    var resultDate: String,
     var resultName: String,
     var resultDesc: String,
     var resultSolution: String,

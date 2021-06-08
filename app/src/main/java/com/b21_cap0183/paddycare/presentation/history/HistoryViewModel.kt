@@ -9,4 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HistoryViewModel @Inject constructor(paddyUseCase: PaddyUseCase) : ViewModel() {
     val history = paddyUseCase.getAllResult().asLiveData()
+
+    //val deleteHistory() = paddyUseCase.deleteResult()
 }

@@ -11,6 +11,7 @@ import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.core.domain.model.Result
 import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
 import com.b21_cap0183.paddycare.core.utils.DataMapper
+import com.b21_cap0183.paddycare.core.utils.DateHelper
 import kotlinx.coroutines.flow.*
 import java.io.File
 import javax.inject.Inject
@@ -77,6 +78,7 @@ class PaddyRepository @Inject constructor(
                 val resultEntity = ArrayList<ResultEntity>()
                 resultEntity.add(ResultEntity(
                     resultId = data.id,
+                    resultDate = DateHelper.getCurrentDate(),
                     resultName = data.label,
                     resultDesc = data.description,
                     resultSolution = data.solution,
@@ -85,4 +87,9 @@ class PaddyRepository @Inject constructor(
                 localDataSource.insertResult(resultEntity)
             }
         }.asFlow()
+
+//    override fun deleteResult(resultEntity: ResultEntity) =
+//        localDataSource.deleteResult(resultEntity)
+
+
 }

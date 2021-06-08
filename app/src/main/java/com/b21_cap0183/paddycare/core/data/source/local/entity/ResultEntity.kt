@@ -12,6 +12,9 @@ data class ResultEntity(
     @ColumnInfo(name = "resultId")
     var resultId: Long,
 
+    @ColumnInfo(name = "date")
+    var resultDate: String,
+
     @ColumnInfo(name = "resultName")
     var resultName: String,
 

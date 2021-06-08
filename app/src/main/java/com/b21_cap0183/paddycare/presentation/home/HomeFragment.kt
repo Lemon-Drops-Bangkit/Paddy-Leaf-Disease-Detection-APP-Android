@@ -80,6 +80,7 @@ class HomeFragment : Fragment() {
                         if (image != null) {
                             when (image) {
                                 is Resource.Loading -> {
+                                    showLoading(true)
                                     Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
                                 }
                                 is Resource.Success -> {

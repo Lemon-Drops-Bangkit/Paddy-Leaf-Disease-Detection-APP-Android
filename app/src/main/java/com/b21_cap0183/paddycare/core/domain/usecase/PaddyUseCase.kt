@@ -12,4 +12,6 @@ interface PaddyUseCase {
     fun getAllResult(): Flow<Resource<List<Result>>>
 
     fun postResult(image: File): Flow<Resource<Result>>
+
+    //fun deleteResult(result: Result)
 }
