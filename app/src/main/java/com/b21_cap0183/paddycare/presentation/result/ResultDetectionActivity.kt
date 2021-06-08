@@ -1,6 +1,8 @@
 package com.b21_cap0183.paddycare.presentation.result
 
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.b21_cap0183.paddycare.R
 import com.b21_cap0183.paddycare.core.domain.model.Result
@@ -37,13 +39,16 @@ class ResultDetectionActivity : AppCompatActivity() {
 
         val detailResult = intent.getParcelableExtra<Result>(EXTRA_RESULT)
         populateResult(detailResult)
+
     }
 
     private fun populateResult(resultEntity: Result?) {
         if (resultEntity != null) {
-            contentDetailResultBinding.resultName.text = resultEntity.resultName
-            contentDetailResultBinding.resultDesc.text = resultEntity.resultDesc
-            contentDetailResultBinding.resultSolution.text = resultEntity.resultSolution
+            contentDetailResultBinding.apply {
+                resultName.text = resultEntity.resultName
+                resultDesc.text = resultEntity.resultDesc
+                resultSolution.text = resultEntity.resultSolution
+            }
         }
     }
 }

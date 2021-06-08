@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@color/teal_200" />
+            android:src="@drawable/paddy1"/>
 
         <TextView
             android:id="@+id/d_title"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toEndOf="@id/d_picture"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.183"
-            tools:text="Selvia Indriani" />
+            tools:text="Sel via Indriani" />
 
         <TextView
             android:id="@+id/d_desc"
@@ -53,16 +53,12 @@
             android:layout_marginTop="@dimen/margin_v1"
             android:ellipsize="end"
             android:gravity="start"
-            android:maxLines="2"
+            android:maxLines="1"
             android:textColor="@color/white"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/d_picture"
             app:layout_constraintTop_toBottomOf="@id/d_title"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="1 jun 2021" />
+            android:text="@string/dummy_date" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -70,6 +66,7 @@
             android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:scaleType="fitXY"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/ic_arrow_forward_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/layout1"
@@ -81,12 +78,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
+        android:id="@+id/d_delete"
         android:layout_width="30dp"
         android:layout_height="50dp"
         android:layout_gravity="end|center_vertical"
         android:layout_marginEnd="16dp"
-        android:background="@color/white"
+        android:background="@android:color/transparent"
         android:scaleType="centerInside"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_delete" />
 
 </androidx.cardview.widget.CardView>

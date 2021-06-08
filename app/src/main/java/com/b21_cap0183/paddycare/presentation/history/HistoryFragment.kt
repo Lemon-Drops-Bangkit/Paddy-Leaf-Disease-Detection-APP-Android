@@ -34,9 +34,9 @@ class HistoryFragment : Fragment() {
             val listHistoryAdapter = ListHistoryAdapter()
 
             historyViewModel.history.observe(viewLifecycleOwner, { history ->
-                if (history != null) {
-                    listHistoryAdapter.setHistory(history.data)
-                }
+                listHistoryAdapter.setHistory(history.data)
+                   //fragmentHistoryBinding.viewEmpty.root.visibility = View.GONE
+                    fragmentHistoryBinding.textEmpty.visibility = if (history.data != null) View.GONE else View.VISIBLE
             })
 
             with(fragmentHistoryBinding.rvHistory) {
