@@ -44,17 +44,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        showLoading(false)
+        showLoading(false)
         fileImage = null
         photo = fragmentHomeBinding.picture
         val button = fragmentHomeBinding.btnTakePicture
 
         button.setOnClickListener {
             takePhoto()
-        }
-        fragmentHomeBinding.btnUpload.setOnClickListener {
-            uploadImage()
-            Log.d("state upload", "CLICKED")
         }
     }
 
@@ -68,30 +64,6 @@ class HomeFragment : Fragment() {
             .createIntent { intent ->
                 startForProfileImageResult.launch(intent)
             }
-    }
-
-    private fun uploadImage() {
-        homeViewModel.result.observe(viewLifecycleOwner, { image ->
-            if (image != null) {
-                when (image) {
-                    is Resource.Loading -> {
-                        Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Success -> {
-                        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                        image.data?.resultId?.let { homeViewModel.setSelectedFile(it) }
-                        val intent = Intent(context, ResultDetectionActivity::class.java).apply {
-                            putExtra(ResultDetectionActivity.EXTRA_RESULT, image.data)
-                            putExtra(ResultDetectionActivity.EXTRA_ACT, 1)
-                        }
-                        startActivity(intent)
-                    }
-                    is Resource.Error -> {
-                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        })
     }
 
     private val startForProfileImageResult =
@@ -108,6 +80,8 @@ class HomeFragment : Fragment() {
                     photo.setImageURI(fileUri)
 
                     homeViewModel.setSelectedFile(fileImage!!)
+                    uploadImage()
+                    Log.d("state upload", "CLICKED")
                 }
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
@@ -118,11 +92,37 @@ class HomeFragment : Fragment() {
             }
         }
 
-//    private fun showLoading(state: Boolean) {
-//        if (state) {
-//            fragmentHomeBinding.progressBar.visibility = View.VISIBLE
-//        } else {
-//            fragmentHomeBinding.progressBar.visibility = View.INVISIBLE
-//        }
-//    }
+    private fun uploadImage() {
+        homeViewModel.result.observe(viewLifecycleOwner, { image ->
+            if (image != null) {
+                when (image) {
+                    is Resource.Loading -> {
+                        showLoading(true)
+                        Toast.makeText(context, "Uploading", Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Success -> {
+                        showLoading(false)
+                        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(context, ResultDetectionActivity::class.java).apply {
+                            putExtra(ResultDetectionActivity.EXTRA_RESULT, image.data)
+                            putExtra(ResultDetectionActivity.EXTRA_ACT, 1)
+                        }
+                        startActivity(intent)
+                    }
+                    is Resource.Error -> {
+                        showLoading(false)
+                        Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            fragmentHomeBinding.progressBar.visibility = View.VISIBLE
+        } else {
+            fragmentHomeBinding.progressBar.visibility = View.INVISIBLE
+        }
+    }
 }

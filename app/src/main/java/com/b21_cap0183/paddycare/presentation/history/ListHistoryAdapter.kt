@@ -31,7 +31,7 @@ class ListHistoryAdapter : RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHo
         fun bind(resultEntity: Result) {
             with(binding) {
                 dTitle.text = resultEntity.resultName
-                dDesc.text = "Detected on "+resultEntity.resultDate
+                dDesc.text = "Detected on ${resultEntity.resultDate}"
 
                 dDelete.setOnClickListener {
                     val builder = AlertDialog.Builder(itemView.context)

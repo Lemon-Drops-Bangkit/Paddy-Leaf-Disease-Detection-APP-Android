@@ -1,6 +1,7 @@
 package com.b21_cap0183.paddycare.core.domain.usecase
 
 import com.b21_cap0183.paddycare.core.data.source.Resource
+import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.core.domain.model.Result
 import kotlinx.coroutines.flow.Flow
@@ -13,5 +14,5 @@ interface PaddyUseCase {
 
     fun postResult(image: File): Flow<Resource<Result>>
 
-    //fun deleteResult(result: Result)
+    fun deleteResult(result: ResultEntity)
 }

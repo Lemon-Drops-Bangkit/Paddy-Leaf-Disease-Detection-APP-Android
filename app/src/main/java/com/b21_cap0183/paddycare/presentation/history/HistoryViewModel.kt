@@ -10,5 +10,5 @@ import javax.inject.Inject
 class HistoryViewModel @Inject constructor(paddyUseCase: PaddyUseCase) : ViewModel() {
     val history = paddyUseCase.getAllResult().asLiveData()
 
-    //val deleteHistory() = paddyUseCase.deleteResult()
+//    val deleteHistory = paddyUseCase.deleteResult()
 }

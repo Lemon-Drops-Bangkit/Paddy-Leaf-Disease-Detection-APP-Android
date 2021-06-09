@@ -14,5 +14,5 @@ interface IPaddyRepository {
 
     fun postResult(image: File): Flow<Resource<Result>>
 
-    //fun deleteResult(resultEntity: ResultEntity)
+    fun deleteResult(resultEntity: ResultEntity)
 }

@@ -1,6 +1,7 @@
 package com.b21_cap0183.paddycare.core.data.source
 
 import com.b21_cap0183.paddycare.core.data.source.local.LocalDataSource
+import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import com.b21_cap0183.paddycare.core.data.source.remote.RemoteDataSource
 import com.b21_cap0183.paddycare.core.data.source.remote.network.ApiResponse
 import com.b21_cap0183.paddycare.core.data.source.remote.response.DiseaseResponse
@@ -85,4 +86,8 @@ class PaddyRepository @Inject constructor(
                 localDataSource.insertResult(resultEntity)
             }
         }.asFlow()
+
+    override fun deleteResult(resultEntity: ResultEntity) {
+        return localDataSource.deleteResult(resultEntity)
+    }
 }
