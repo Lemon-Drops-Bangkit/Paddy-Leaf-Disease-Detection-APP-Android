@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presentation.home.HomeFragment">
 
     <TextView
         android:id="@+id/text_steps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_v1"
-        android:layout_marginTop="@dimen/margin_v1"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
         android:text="@string/steps"
         android:textSize="18sp" />
 
@@ -20,8 +20,8 @@
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_margin="@dimen/margin_v1"
-        app:cardCornerRadius="15dp"
+        android:layout_margin="@dimen/margin_16"
+        app:cardCornerRadius="@dimen/margin_15"
         app:layout_constraintTop_toBottomOf="@id/text_steps">
 
         <TableLayout
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:padding="@dimen/margin_v5">
+                    android:padding="@dimen/margin_2">
 
                     <ImageButton
                         android:id="@+id/view_click_button"
@@ -57,14 +57,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/view_click_button"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="@dimen/margin_4"
                         android:text="@string/click_button"
                         android:textAlignment="center" />
                 </RelativeLayout>
 
                 <ImageView
                     android:id="@+id/view_arrow1"
-                    android:layout_width="2dp"
+                    android:layout_width="@dimen/margin_2"
                     android:layout_height="100dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_arrow_forward" />
@@ -86,7 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/view_take_picture"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="@dimen/margin_4"
                         android:text="@string/take_picture"
                         android:textAlignment="center" />
 
@@ -94,10 +94,10 @@
                 </RelativeLayout>
 
                 <ImageView
-                    android:contentDescription="@string/app_name"
                     android:id="@+id/view_arrow2"
-                    android:layout_width="2dp"
+                    android:layout_width="@dimen/margin_2"
                     android:layout_height="100dp"
+                    android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_arrow_forward" />
 
 
@@ -118,7 +118,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/view_result"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="@dimen/margin_4"
                         android:text="@string/see_result"
                         android:textAlignment="center" />
 
@@ -134,8 +134,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="400dp"
-        android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
         app:cardCornerRadius="15dp">
 
         <ImageView
@@ -150,10 +150,10 @@
             android:id="@+id/btn_take_picture"
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="200dp"
-            android:background="@drawable/background"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/background"
 
             android:text="@string/take_picture"
             app:icon="@drawable/ic_outline_camera" />
@@ -162,7 +162,7 @@
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
     </androidx.cardview.widget.CardView>
 

@@ -10,9 +10,6 @@
     <string name="retake_picture">Re-take Picture</string>
     <string name="information">Information App</string>
     <string name="symptom_information">Symptom Information</string>
-    <string name="step1">Click on the Take Picture button</string>
-    <string name="step2">Point the camera at the rice leaf you want to detect</string>
-    <string name="step3">Result of detection will appear when the detection process is complete</string>
     <string name="steps">Steps to detect paddy leaf diseases</string>
     <string name="click_button">Click Button</string>
     <string name="see_result">See Result</string>
@@ -22,7 +19,6 @@
     <string name="by_lemon_drops">By Lemon Drops</string>
     <string name="version_app">Version App</string>
     <string name="version">V 1.0</string>
-    <string name="please_wait">Please wait..</string>
     <string name="dummy_date">1 jun 2021</string>
     <string name="about_app">About App</string>
     <string name="about_desc">The application is owned and managed by Lemon Drops, the Capstone Project team, consisting of 3 fields of Mobile Developer, Machine Learning, and Cloud Computing. This app is developed for Bangkit\'s Capstone purposes developed by Lemon Drops.</string>

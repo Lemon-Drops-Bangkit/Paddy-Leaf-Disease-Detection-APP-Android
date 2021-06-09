@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_v2"
-    android:layout_marginBottom="@dimen/margin_v2"
-    android:layout_marginStart="@dimen/margin_v4"
-    android:layout_marginEnd="@dimen/margin_v4"
+    android:layout_marginStart="@dimen/margin_10"
+    android:layout_marginTop="@dimen/margin_8"
+    android:layout_marginEnd="@dimen/margin_10"
+    android:layout_marginBottom="8dp"
     android:orientation="vertical"
-    app:cardCornerRadius="@dimen/margin_v1">
+    app:cardCornerRadius="@dimen/margin_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout1"
@@ -31,7 +31,7 @@
             android:id="@+id/d_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_v1"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="24dp"
             android:gravity="start"
             android:maxLines="2"
@@ -47,8 +47,8 @@
             android:id="@+id/d_desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="@dimen/margin_v1"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
             android:gravity="start"
             android:maxLines="2"
             android:textColor="@color/green_01"

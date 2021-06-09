@@ -7,8 +7,8 @@
     tools:context=".presentation.splashscreen.SplashScreenActivity">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/margin_200"
+        android:layout_height="@dimen/margin_200"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_splashscreen"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,23 +20,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/by_lemon_drops"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/text_version"
         android:layout_marginBottom="4dp"
+        android:text="@string/by_lemon_drops"
         android:textStyle="bold"
-        />
+        app:layout_constraintBottom_toTopOf="@id/text_version"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/text_version"
-        android:layout_marginTop="@dimen/margin_v1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_30"
         android:text="@string/version"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

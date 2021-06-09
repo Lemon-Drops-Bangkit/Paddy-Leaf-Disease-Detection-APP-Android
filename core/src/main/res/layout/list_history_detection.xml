@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="2dp"
-    android:layout_marginTop="@dimen/margin_v2"
+    android:layout_marginStart="@dimen/margin_2"
+    android:layout_marginTop="@dimen/margin_8"
     android:layout_marginEnd="2dp"
-    android:layout_marginBottom="@dimen/margin_v2"
+    android:layout_marginBottom="@dimen/margin_8"
     android:orientation="vertical"
-    app:cardCornerRadius="@dimen/margin_v1">
+    app:cardCornerRadius="@dimen/margin_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout1"
@@ -21,18 +21,18 @@
             android:id="@+id/d_picture"
             android:layout_width="90dp"
             android:layout_height="120dp"
-            android:scaleType="centerInside"
             android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/paddy1"/>
+            tools:src="@color/yellow" />
 
         <TextView
             android:id="@+id/d_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_v1"
+            android:layout_marginStart="@dimen/margin_16"
             android:gravity="start"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -49,16 +49,16 @@
             android:id="@+id/d_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_v1"
-            android:layout_marginTop="@dimen/margin_v1"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_16"
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="1"
+            android:text="@string/dummy_date"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@id/d_picture"
-            app:layout_constraintTop_toBottomOf="@id/d_title"
-            android:text="@string/dummy_date" />
+            app:layout_constraintTop_toBottomOf="@id/d_title" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -70,8 +70,8 @@
         android:layout_gravity="end|center_vertical"
         android:layout_marginEnd="16dp"
         android:background="@android:color/transparent"
-        android:scaleType="centerInside"
         android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
         android:src="@drawable/ic_delete" />
 
 </androidx.cardview.widget.CardView>

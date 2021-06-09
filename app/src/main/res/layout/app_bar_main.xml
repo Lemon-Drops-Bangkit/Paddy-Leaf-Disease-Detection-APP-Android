@@ -11,7 +11,8 @@
         android:layout_height="?actionBarSize"
         android:background="@android:color/transparent"
         android:outlineAmbientShadowColor="@android:color/transparent"
-        android:outlineSpotShadowColor="@android:color/transparent">
+        android:outlineSpotShadowColor="@android:color/transparent"
+        tools:ignore="UnusedAttribute">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,7 +22,8 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main"
-        android:id="@+id/content_main"/>
+    <include
+        android:id="@+id/content_main"
+        layout="@layout/content_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
