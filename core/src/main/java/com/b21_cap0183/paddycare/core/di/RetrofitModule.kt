@@ -1,5 +1,6 @@
 package com.b21_cap0183.paddycare.core.di
 
+import com.b21_cap0183.paddycare.core.BuildConfig
 import com.b21_cap0183.paddycare.core.data.source.remote.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -30,7 +31,7 @@ object RetrofitModule {
     @Provides
     fun provideRetrofit(client: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl("http://34.101.223.192:5000/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
