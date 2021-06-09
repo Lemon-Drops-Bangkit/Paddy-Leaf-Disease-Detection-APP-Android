@@ -10,9 +10,12 @@ import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.core.domain.model.Result
 import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
 import com.b21_cap0183.paddycare.core.utils.DataMapper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -76,7 +79,6 @@ class PaddyRepository @Inject constructor(
 
             override fun shouldFetch(data: Result?): Boolean =
                 data?.resultImage != image.toString()
-//                data?.resultImage == null || data.resultId == null
 
             override suspend fun createCall(): Flow<ApiResponse<ResultResponse>> =
                 remoteDataSource.getResult(image)
@@ -88,6 +90,8 @@ class PaddyRepository @Inject constructor(
         }.asFlow()
 
     override fun deleteResult(resultEntity: ResultEntity) {
-        return localDataSource.deleteResult(resultEntity)
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataSource.deleteResult(resultEntity)
+        }
     }
 }

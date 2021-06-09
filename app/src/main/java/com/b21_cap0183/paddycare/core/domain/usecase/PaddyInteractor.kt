@@ -1,10 +1,7 @@
 package com.b21_cap0183.paddycare.core.domain.usecase
 
-import com.b21_cap0183.paddycare.core.data.source.Resource
 import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
-import com.b21_cap0183.paddycare.core.domain.model.Result
 import com.b21_cap0183.paddycare.core.domain.repository.IPaddyRepository
-import kotlinx.coroutines.flow.Flow
 import java.io.File
 import javax.inject.Inject
 

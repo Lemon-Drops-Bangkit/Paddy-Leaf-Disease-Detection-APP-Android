@@ -14,7 +14,7 @@ import com.b21_cap0183.paddycare.presentation.result.ResultDetectionActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ListHistoryAdapter : RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHolder>() {
+class ListHistoryAdapter(private val callback: HistoryFragmentCallback) : RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHolder>() {
 
     private var listHistory = ArrayList<Result>()
 
@@ -33,16 +33,17 @@ class ListHistoryAdapter : RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHo
                 dTitle.text = resultEntity.resultName
                 dDesc.text = "Detected on ${resultEntity.resultDate}"
 
-                dDelete.setOnClickListener {
-                    val builder = AlertDialog.Builder(itemView.context)
-                    builder.setPositiveButton("Yes"){ _, _->
-                        Toast.makeText(itemView.context,  "Successfully deleted", Toast.LENGTH_SHORT).show()
-                    }
-                    builder.setNegativeButton("No"){_, _-> }
-                    builder.setTitle("Delete Result Detection?")
-                    builder.setMessage("Do you want to delete ${resultEntity.resultName} detection results")
-                    builder.create().show()
-                }
+//                dDelete.setOnClickListener {
+//                    val builder = AlertDialog.Builder(itemView.context)
+//                    builder.setPositiveButton("Yes"){ _, _->
+//                        Toast.makeText(itemView.context,  "Successfully deleted", Toast.LENGTH_SHORT).show()
+//                    }
+//                    builder.setNegativeButton("No"){_, _-> }
+//                    builder.setTitle("Delete Result Detection?")
+//                    builder.setMessage("Do you want to delete ${resultEntity.resultName} detection results")
+//                    builder.create().show()
+//                }
+                dDelete.setOnClickListener { callback.onDeleteClick(resultEntity) }
                 //dDesc.text = resultEntity.resultDesc
 
                     Glide.with(itemView.context)
@@ -60,6 +61,7 @@ class ListHistoryAdapter : RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHo
                 }
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHistoryAdapter.HistoryViewHolder {

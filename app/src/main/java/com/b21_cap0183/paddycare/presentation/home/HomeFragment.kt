@@ -56,10 +56,10 @@ class HomeFragment : Fragment() {
 
     private fun takePhoto() {
         ImagePicker.with(this)
-            .crop()                                //Crop image(Optional), Check Customization for more option
-            .compress(1024)            //Final image size will be less than 1 MB(Optional)
-            .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
-            //  Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker
+            .crop()
+            .compress(1024)
+            .maxResultSize(1080, 1080)
+            /*Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker*/
             .saveDir(File(activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!, "ImagePicker"))
             .createIntent { intent ->
                 startForProfileImageResult.launch(intent)
@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
 
             when (resultCode) {
                 Activity.RESULT_OK -> {
-                    //Image Uri will not be null for RESULT_OK
+                    /*Image Uri will not be null for RESULT_OK*/
                     val fileUri = data?.data!!
                     fileImage = fileUri.toFile()
 

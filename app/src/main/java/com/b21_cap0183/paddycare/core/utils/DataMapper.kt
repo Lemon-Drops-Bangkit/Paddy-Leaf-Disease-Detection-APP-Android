@@ -25,7 +25,7 @@ object DataMapper {
         return diseaseList
     }
 
-    fun mapResultResponsesToEntities(input: List<ResultResponse>) : List<ResultEntity> {
+    fun mapResultResponsesToEntities(input: List<ResultResponse>): List<ResultEntity> {
         val resultList = ArrayList<ResultEntity>()
         input.map {
             val result = ResultEntity(
@@ -73,11 +73,22 @@ object DataMapper {
             resultImage = input.resultImage
         )
 
-    fun mapResultResponseToEntity(input: ResultResponse, image: File) : List<ResultEntity> {
+    fun mapDomainToEntity(input: Result): ResultEntity =
+        ResultEntity(
+            resultId = input.resultId,
+            resultDate = input.resultDate,
+            resultName = input.resultName,
+            resultDesc = input.resultDesc,
+            resultSolution = input.resultSolution,
+            resultImage = input.resultImage
+        )
+
+
+    fun mapResultResponseToEntity(input: ResultResponse, image: File): List<ResultEntity> {
         val resultEntity = ArrayList<ResultEntity>()
         resultEntity.add(ResultEntity(
             resultId = input.id,
-            resultDate = "",
+            resultDate = DateHelper.getCurrentDate(),
             resultName = input.label,
             resultDesc = input.description,
             resultSolution = input.solution,
@@ -86,3 +97,4 @@ object DataMapper {
         return resultEntity
     }
 }
+

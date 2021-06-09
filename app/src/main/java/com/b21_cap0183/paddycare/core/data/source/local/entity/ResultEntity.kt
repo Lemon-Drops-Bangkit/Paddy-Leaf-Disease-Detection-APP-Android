@@ -8,22 +8,21 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "paddyresult")
 data class ResultEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo(name = "resultId")
-    var resultId: Long,
+    var resultId: Long? = null,
 
     @ColumnInfo(name = "date")
-    var resultDate: String,
+    var resultDate: String? = null,
 
     @ColumnInfo(name = "resultName")
-    var resultName: String,
+    var resultName: String? = null,
 
     @ColumnInfo(name = "resultDesc")
-    var resultDesc: String,
+    var resultDesc: String? = null,
 
     @ColumnInfo(name = "resultSolution")
-    var resultSolution: String,
+    var resultSolution: String? = null,
 
     @ColumnInfo(name = "resultImage")
-    var resultImage: String
+    var resultImage: String? = null
 )

@@ -6,7 +6,7 @@ import com.b21_cap0183.paddycare.core.data.source.local.entity.DiseaseEntity
 import com.b21_cap0183.paddycare.core.data.source.local.entity.ResultEntity
 import javax.inject.Singleton
 
-@Database(entities = [DiseaseEntity::class, ResultEntity::class], version = 2, exportSchema = false)
+@Database(entities = [DiseaseEntity::class, ResultEntity::class], version = 1, exportSchema = false)
 @Singleton
 abstract class PaddyDatabase : RoomDatabase() {
 
