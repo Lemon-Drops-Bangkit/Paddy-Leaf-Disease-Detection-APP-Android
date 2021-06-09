@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21_cap0183.paddycare.R
+import com.b21_cap0183.paddycare.core.databinding.ListHistoryDetectionBinding
 import com.b21_cap0183.paddycare.core.domain.model.Result
-import com.b21_cap0183.paddycare.databinding.ListHistoryDetectionBinding
 import com.b21_cap0183.paddycare.presentation.result.ResultDetectionActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ListHistoryAdapter(private val callback: HistoryFragmentCallback) : RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHolder>() {
+class ListHistoryAdapter(private val callback: HistoryFragmentCallback) :
+    RecyclerView.Adapter<ListHistoryAdapter.HistoryViewHolder>() {
 
     private var listHistory = ArrayList<Result>()
 
@@ -51,8 +52,12 @@ class ListHistoryAdapter(private val callback: HistoryFragmentCallback) : Recycl
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHistoryAdapter.HistoryViewHolder {
-        val listHistoryDetectionBinding = ListHistoryDetectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ListHistoryAdapter.HistoryViewHolder {
+        val listHistoryDetectionBinding =
+            ListHistoryDetectionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HistoryViewHolder(listHistoryDetectionBinding)
     }
 

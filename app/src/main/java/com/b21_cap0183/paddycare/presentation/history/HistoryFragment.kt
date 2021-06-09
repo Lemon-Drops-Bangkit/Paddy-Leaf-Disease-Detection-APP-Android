@@ -38,8 +38,8 @@ class HistoryFragment : Fragment(), HistoryFragmentCallback {
 
             historyViewModel.history.observe(viewLifecycleOwner, { history ->
                 listHistoryAdapter.setHistory(history.data)
-                //fragmentHistoryBinding.viewEmpty.root.visibility = View.GONE
-                fragmentHistoryBinding.textEmpty.visibility = if (history.data != null) View.GONE else View.VISIBLE
+                fragmentHistoryBinding.textEmpty.visibility =
+                    if (history.data != null) View.GONE else View.VISIBLE
             })
 
             with(fragmentHistoryBinding.rvHistory) {

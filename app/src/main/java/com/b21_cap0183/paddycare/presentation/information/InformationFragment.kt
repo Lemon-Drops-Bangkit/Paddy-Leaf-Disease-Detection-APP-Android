@@ -16,7 +16,8 @@ class InformationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        fragmentInformationBinding = FragmentInformationBinding.inflate(layoutInflater, container, false)
+        fragmentInformationBinding =
+            FragmentInformationBinding.inflate(layoutInflater, container, false)
         return fragmentInformationBinding.root
     }
 

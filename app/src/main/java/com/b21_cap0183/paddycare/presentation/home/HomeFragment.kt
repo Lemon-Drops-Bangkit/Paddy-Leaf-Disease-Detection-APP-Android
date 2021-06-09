@@ -55,10 +55,15 @@ class HomeFragment : Fragment() {
     private fun takePhoto() {
         ImagePicker.with(this)
             .crop()
-            .compress(1024)
+            .compress(2048)
             .maxResultSize(1080, 1080)
             /* Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker */
-            .saveDir(File(activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!, "ImagePicker"))
+            .saveDir(
+                File(
+                    activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!,
+                    "ImagePicker"
+                )
+            )
             .createIntent { intent ->
                 startForProfileImageResult.launch(intent)
             }

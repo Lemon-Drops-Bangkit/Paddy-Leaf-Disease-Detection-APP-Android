@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.b21_cap0183.paddycare.R
+import com.b21_cap0183.paddycare.core.databinding.ListViewDiseasesBinding
 import com.b21_cap0183.paddycare.core.domain.model.Disease
-import com.b21_cap0183.paddycare.databinding.ListViewDiseasesBinding
 import com.b21_cap0183.paddycare.presentation.detail.DetailDiseaseActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
