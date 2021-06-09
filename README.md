@@ -8,6 +8,7 @@ For Bangkit Capstone Project Purposes
   * Retrofit
   * Room
   * Dagger Hilt
+  * Coroutine Flow
   * Image Picker https://github.com/Dhaval2404/ImagePicker
 
 ## Paddy Leaf Disease Detection Team
