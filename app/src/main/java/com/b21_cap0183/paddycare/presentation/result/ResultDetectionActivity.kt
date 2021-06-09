@@ -3,8 +3,6 @@ package com.b21_cap0183.paddycare.presentation.result
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.b21_cap0183.paddycare.R
 import com.b21_cap0183.paddycare.core.domain.model.Result

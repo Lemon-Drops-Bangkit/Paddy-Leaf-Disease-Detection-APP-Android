@@ -2,7 +2,6 @@ package com.b21_cap0183.paddycare.presentation.home
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -14,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.b21_cap0183.paddycare.core.data.source.Resource
@@ -59,7 +57,7 @@ class HomeFragment : Fragment() {
             .crop()
             .compress(1024)
             .maxResultSize(1080, 1080)
-            /*Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker*/
+            /* Path: /storage/sdcard0/Android/data/package/files/Pictures/ImagePicker */
             .saveDir(File(activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!, "ImagePicker"))
             .createIntent { intent ->
                 startForProfileImageResult.launch(intent)
@@ -73,7 +71,7 @@ class HomeFragment : Fragment() {
 
             when (resultCode) {
                 Activity.RESULT_OK -> {
-                    /*Image Uri will not be null for RESULT_OK*/
+                    /* Image Uri will not be null for RESULT_OK */
                     val fileUri = data?.data!!
                     fileImage = fileUri.toFile()
 

@@ -1,9 +1,7 @@
 package com.b21_cap0183.paddycare.presentation.detail
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.b21_cap0183.paddycare.R
 import com.b21_cap0183.paddycare.core.domain.model.Disease
 import com.b21_cap0183.paddycare.databinding.ActivityDetailDiseaseBinding
 import com.b21_cap0183.paddycare.databinding.ContentDetailBinding

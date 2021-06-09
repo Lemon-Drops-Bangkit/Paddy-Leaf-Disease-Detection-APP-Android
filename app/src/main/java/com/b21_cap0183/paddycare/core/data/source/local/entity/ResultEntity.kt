@@ -1,6 +1,5 @@
 package com.b21_cap0183.paddycare.core.data.source.local.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

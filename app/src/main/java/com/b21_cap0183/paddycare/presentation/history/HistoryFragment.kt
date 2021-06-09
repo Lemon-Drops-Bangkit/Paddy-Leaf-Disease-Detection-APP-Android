@@ -1,7 +1,6 @@
 package com.b21_cap0183.paddycare.presentation.history
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,11 +53,11 @@ class HistoryFragment : Fragment(), HistoryFragmentCallback {
     override fun onDeleteClick(result: Result) {
         if (activity != null) {
             val builder = AlertDialog.Builder(requireContext())
-            builder.setPositiveButton("Yes"){ _, _->
+            builder.setPositiveButton("Yes") { _, _ ->
                 historyViewModel.setSelectedData(result)
-                Toast.makeText(context,  "Successfully deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Successfully deleted", Toast.LENGTH_SHORT).show()
             }
-            builder.setNegativeButton("No"){_, _-> }
+            builder.setNegativeButton("No") { _, _ -> }
             builder.setTitle("Delete Result Detection?")
             builder.setMessage("Do you want to delete ${result.resultName} detection results")
             builder.create().show()

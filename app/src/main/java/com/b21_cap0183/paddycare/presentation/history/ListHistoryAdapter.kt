@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.b21_cap0183.paddycare.R
 import com.b21_cap0183.paddycare.core.domain.model.Result
@@ -33,24 +31,13 @@ class ListHistoryAdapter(private val callback: HistoryFragmentCallback) : Recycl
                 dTitle.text = resultEntity.resultName
                 dDesc.text = "Detected on ${resultEntity.resultDate}"
 
-//                dDelete.setOnClickListener {
-//                    val builder = AlertDialog.Builder(itemView.context)
-//                    builder.setPositiveButton("Yes"){ _, _->
-//                        Toast.makeText(itemView.context,  "Successfully deleted", Toast.LENGTH_SHORT).show()
-//                    }
-//                    builder.setNegativeButton("No"){_, _-> }
-//                    builder.setTitle("Delete Result Detection?")
-//                    builder.setMessage("Do you want to delete ${resultEntity.resultName} detection results")
-//                    builder.create().show()
-//                }
                 dDelete.setOnClickListener { callback.onDeleteClick(resultEntity) }
-                //dDesc.text = resultEntity.resultDesc
 
-                    Glide.with(itemView.context)
-                        .load(resultEntity.resultImage)
-                        .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-                        .error(R.drawable.ic_error)
-                        .into(dPicture)
+                Glide.with(itemView.context)
+                    .load(resultEntity.resultImage)
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
+                    .error(R.drawable.ic_error)
+                    .into(dPicture)
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, ResultDetectionActivity::class.java)
